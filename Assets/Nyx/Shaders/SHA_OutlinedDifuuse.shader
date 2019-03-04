@@ -1,13 +1,12 @@
 ﻿Shader "Nyx/OutlinedDifuuse"
 {
-
 	// Shader properties
     Properties
     {
 		_Color("Main Color", Color) = (1.0, 1.0, 1.0, 1.0)
         _MainTex ("Texture", 2D) = "white" {}
 		_OutlineColor("Outline Color", Color) = (1.0, 1.0, 0.0, 1.0)
-		_OutlineThickness("Outline Thickness", Range(0.0, 10.0)) = 0.1
+		_OutlineThickness("Outline Thickness", Range(0.0, 4.0)) = 0.1
     }
 
 	// CG includes
@@ -90,4 +89,7 @@
 			}
 		}
     }
+
+	// Use our custom inspector
+	CustomEditor "GUI_OutlinedDiffuse"
 }
