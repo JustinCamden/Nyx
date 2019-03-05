@@ -15,9 +15,19 @@ public class SCR_RobotAnimEvents : MonoBehaviour
         owningRobot.OnHitReactEnd();
     }
 
+    public void PunchStart()
+    {
+        owningRobot.OnPunchStart();
+    }
+
     public void PunchEnd()
     {
         owningRobot.OnPunchEnd();
+    }
+
+    public void RocketPunchStart()
+    {
+        owningRobot.OnRocketPunchStart();
     }
 
     public void RocketPunchEnd()

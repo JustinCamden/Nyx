@@ -17,8 +17,41 @@ public class SCR_Health : MonoBehaviour
         }
     }
 
-    delegate void OnDeathDelegate();
-    OnDeathDelegate OnDeath;
+    [SerializeField, Tooltip("The owning team agent of this health component")]
+    private SCR_TeamAgent owningTeamAgent;
+
+    private bool blocking = false;
+    private Vector3 blockingDirection;
+
+    private void Start()
+    {
+        if (!owningTeamAgent)
+        {
+            owningTeamAgent = GetComponent<SCR_TeamAgent>();
+        }
+        internalHealth = Mathf.Min(maxHealth, internalHealth);
+    }
+
+    public SCR_TeamAgent.Team HealthTeam
+    {
+        get
+        {
+            if (owningTeamAgent)
+            {
+                return owningTeamAgent.AgentTeam;
+            }
+            else
+            {
+                return SCR_TeamAgent.Team.Neutral;
+            }
+        }
+    }
+
+    public delegate void OnDeathDelegate();
+    public OnDeathDelegate onDeath;
+
+    public delegate void OnHitDelegate();
+    public OnHitDelegate onHit;
 
     // Whether this agent is currently dead
     private bool internalIsDead = false;
@@ -30,16 +63,30 @@ public class SCR_Health : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(float damage, Vector3 damageOrigin, bool canBeBlocked)
     {
         if (!internalIsDead)
         {
+            // If we are blocking this direction, do nothing
+            if (canBeBlocked && blocking && Vector3.Dot(damageOrigin - transform.position, blockingDirection) > 0.0f)
+            {
+                return;
+            }
+
+            // Otherwise apply damage as normal
             internalHealth -= damage;
             if (internalHealth <= 0.0f)
             {
                 internalHealth = 0.0f;
                 internalIsDead = true;
-                OnDeath();
+                if (onDeath != null)
+                {
+                    onDeath();
+                }
+            }
+            else if (onHit != null)
+            {
+                onHit();
             }
         }
         return;
@@ -60,7 +107,18 @@ public class SCR_Health : MonoBehaviour
         {
             internalIsDead = true;
             internalHealth = 0.0f;
-            OnDeath();
+            onDeath();
         }
+    }
+
+    public void BlockDirection(Vector3 direction)
+    {
+        blockingDirection = direction;
+        blocking = true;
+    }
+
+    public void StopBlockingDirection()
+    {
+        blocking = false;
     }
 }

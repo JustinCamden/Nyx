@@ -429,7 +429,14 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
+      - time: 0.52243054
+        functionName: PunchStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.8040089
         functionName: PunchEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
@@ -704,6 +711,20 @@ ModelImporter:
       curves: []
       events:
       - time: 1
+        functionName: RocketPunchEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.3357843
+        functionName: RocketPunchStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.42156854
         functionName: RocketPunchEnd
         data: 
         objectReferenceParameter: {instanceID: 0}

@@ -41,10 +41,18 @@ public class SCR_RobotCharacter : MonoBehaviour
 
     // Input variables
     public float moveInput = 0.0f;
-    public bool jumpRequested = false;
     private bool jumpQueued = false;
     private bool jumpStarting = false;
 
+    // Damage triggers
+    [SerializeField, Tooltip("The damage trigger for the normal punch.")]
+    private SCR_DamageTrigger punchDamageTrigger;
+    [SerializeField, Tooltip("The damage trigger for jumping on enemies.")]
+    private SCR_DamageTrigger jumpDamageTrigger;
+    [SerializeField, Tooltip("The damage trigger for rocket punching.")]
+    private SCR_DamageTrigger rocketPunchDamageTrigger;
+    [SerializeField, Tooltip("Mesh for visualizing the rocket punch.")]
+    private MeshRenderer rocketPunchMesh;
 
     // Animation variables
     // Types of actions the robot can perform
@@ -108,6 +116,15 @@ public class SCR_RobotCharacter : MonoBehaviour
             }
         }
 
+        rocketPunchMesh.enabled = false;
+
+        // Register delegates
+        if (ownedHealth)
+        {
+            ownedHealth.onHit += OnHit;
+            ownedHealth.onDeath += OnDeath;
+        }
+
         // Set initial facing direction depending on the current rotation of the robot
         facingDirection.x = Mathf.Sign(Vector3.Dot(transform.forward, Vector3.right));
 
@@ -118,6 +135,14 @@ public class SCR_RobotCharacter : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        if (!ownedHealth.IsDead)
+        {
+            UpdateCharacterController();
+        }
+    }
+
+    void UpdateCharacterController()
     {
         // Update the direction of movement
         // If the move input is not zero
@@ -154,36 +179,32 @@ public class SCR_RobotCharacter : MonoBehaviour
         // If we are grounded
         if (ownedCharacterController.isGrounded)
         {
-            // Begin jump if queued
-            if (jumpRequested && !jumpQueued && CanMove() && CanJump())
-            {
-                SetStanceState(RobotStance.InAir);
-                jumpQueued = true;
-            }
 
-            // Otherwise, keep the character on the ground
+            if (jumpStarting)
+            {
+                jumpStarting = false;
+            }
             else
             {
-                if (jumpStarting)
+                if (!jumpQueued && stanceState == RobotStance.InAir)
                 {
-                    jumpStarting = false;
+                    SetStanceState(RobotStance.Idle);
+                    jumpDamageTrigger.DeactivateDamageTrigger();
                 }
-                else
-                {
-                    if (!jumpQueued && stanceState == RobotStance.InAir)
-                    {
-                        SetStanceState(RobotStance.Idle);
-                    }
-                    moveDirection.y = -gravity;
-                }
+                moveDirection.y = -gravity;
             }
         }
+
 
         // Else, gradually apply gravity
         else
         {
             // Multiply gravity by falling for a better feeling arc
-            moveDirection.y -= gravity * gravityFallingMultiplier * Time.deltaTime; 
+            moveDirection.y -= gravity * gravityFallingMultiplier * Time.deltaTime;
+            if (moveDirection.y < 0.0f && !jumpDamageTrigger.Active)
+            {
+                jumpDamageTrigger.ActivateDamageTrigger();
+            }
         }
 
         // Apply movement
@@ -197,6 +218,8 @@ public class SCR_RobotCharacter : MonoBehaviour
                 Quaternion.LookRotation(facingDirection),
                 Time.deltaTime * rotationSpeed);
         }
+
+        return;
     }
 
     private void SetActionState(RobotAction newAction)
@@ -323,12 +346,19 @@ public class SCR_RobotCharacter : MonoBehaviour
     private bool CanMove()
     {
         return (!ownedHealth.IsDead
-            && stanceState != RobotStance.Blocking);
+            && stanceState != RobotStance.Blocking
+            && actionState != RobotAction.RocketPunching);
     }
 
     private bool CanJump()
     {
-        return actionState == RobotAction.Idle;
+        return actionState == RobotAction.Idle && ownedCharacterController.isGrounded;
+    }
+
+    public void OnPunchStart()
+    {
+        punchDamageTrigger.ActivateDamageTrigger();
+        return;
     }
 
     public void OnPunchEnd()
@@ -337,15 +367,25 @@ public class SCR_RobotCharacter : MonoBehaviour
         {
             SetActionState(RobotAction.Idle);
         }
+        punchDamageTrigger.DeactivateDamageTrigger();
+        return;
+    }
+
+    public void OnRocketPunchStart()
+    {
+        rocketPunchDamageTrigger.ActivateDamageTrigger();
+        rocketPunchMesh.enabled = true;
         return;
     }
 
     public void OnRocketPunchEnd()
     {
-        if (actionState == RobotAction.Punching)
+        if (actionState == RobotAction.RocketPunching)
         {
             SetActionState(RobotAction.Idle);
         }
+        rocketPunchDamageTrigger.DeactivateDamageTrigger();
+        rocketPunchMesh.enabled = false;
         return;
     }
 
@@ -367,5 +407,79 @@ public class SCR_RobotCharacter : MonoBehaviour
             jumpQueued = false;
             jumpStarting = true;
         }
+    }
+
+    public void Punch()
+    {
+        if (CanEnterAction())
+        {
+            SetActionState(RobotAction.Punching);
+        }
+    }
+
+    public void RocketPunch()
+    {
+        if (CanEnterAction())
+        {
+            SetActionState(RobotAction.RocketPunching);
+        }
+    }
+
+    public void Block()
+    {
+        if (CanEnterAction())
+        {
+            SetStanceState(RobotStance.Blocking);
+            ownedHealth.BlockDirection(facingDirection);
+        }
+
+        return;
+    }
+
+    public void EndBlock()
+    {
+        if (stanceState == RobotStance.Blocking)
+        {
+            SetStanceState(RobotStance.Idle);
+            ownedHealth.StopBlockingDirection();
+        }
+
+        return;
+    }
+
+    public void Jump()
+    {
+        // Begin jump if not already queued
+        if (!jumpQueued && CanMove() && CanJump())
+        {
+            SetStanceState(RobotStance.InAir);
+            jumpDamageTrigger.ActivateDamageTrigger();
+            jumpQueued = true;
+        }
+    }
+
+    public void OnHit()
+    {
+        if (CanEnterAction())
+        {
+            SetActionState(RobotAction.HitReacting);
+        }
+    }
+
+    public void OnDeath()
+    {
+        ownedAnimator.SetTrigger("Dead");
+        ownedCharacterController.detectCollisions = false;
+        ownedCharacterController.enabled = false;
+        punchDamageTrigger.DeactivateDamageTrigger();
+        jumpDamageTrigger.DeactivateDamageTrigger();
+        rocketPunchDamageTrigger.DeactivateDamageTrigger();
+        rocketPunchMesh.enabled = false;
+        Destroy(gameObject, 1.0f);
+    }
+
+    public void OnVictory()
+    {
+        ownedAnimator.SetBool("Victory", true);
     }
 }

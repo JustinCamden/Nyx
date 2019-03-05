@@ -7,6 +7,7 @@ public class SCR_PlayerActions: SCR_InputManager
     public SCR_InputAxis_1D move;
     public SCR_InputAxis_1D jump;
     public SCR_InputAxis_1D punch;
+    public SCR_InputAxis_1D block;
     public SCR_InputAxis_1D rocketPunch;
     public SCR_InputAxis_1D menu;
 
@@ -34,9 +35,10 @@ public class SCR_PlayerActions: SCR_InputManager
 
     void Start()
     {
-        move = BindInputAxis1D("Horizontal", 0.1f);
-        jump = BindInputAxis1D("Jump", 0.0f);
+        move = BindInputAxis1D("Horizontal", 0.0f);
+        jump = BindInputAxis1D("Vertical", 0.0f);
         punch = BindInputAxis1D("Fire1", 0.0f);
+        block = BindInputAxis1D("Jump", 0.0f);
         rocketPunch = BindInputAxis1D("Fire2", 0.0f);
         menu = BindInputAxis1D("Cancel", 0.0f);
     }
