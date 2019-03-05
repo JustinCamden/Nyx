@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SCR_PlayerActions: SCR_InputManager
 {
-    public SCR_InputAxis_2D move;
+    public SCR_InputAxis_1D move;
     public SCR_InputAxis_1D jump;
     public SCR_InputAxis_1D punch;
     public SCR_InputAxis_1D rocketPunch;
@@ -34,7 +34,7 @@ public class SCR_PlayerActions: SCR_InputManager
 
     void Start()
     {
-        move = BindInputAxis2D("Horizontal", "Vertical", 0.1f);
+        move = BindInputAxis1D("Horizontal", 0.1f);
         jump = BindInputAxis1D("Jump", 0.0f);
         punch = BindInputAxis1D("Fire1", 0.0f);
         rocketPunch = BindInputAxis1D("Fire2", 0.0f);
@@ -43,6 +43,6 @@ public class SCR_PlayerActions: SCR_InputManager
 
     private void Update()
     {
-        UpdateInputAxises();
+       UpdateInputAxises();
     }
 }

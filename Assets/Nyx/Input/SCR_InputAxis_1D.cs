@@ -70,7 +70,7 @@ public class SCR_InputAxis_1D
         }
 
         // Check if the axis changed value
-        float newAxisValue = Input.GetAxis(axisName);
+        float newAxisValue = Input.GetAxisRaw(axisName);
         if (newAxisValue != internalAxisValue)
         {
             // Update axis value
