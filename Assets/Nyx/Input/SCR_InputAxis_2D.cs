@@ -72,7 +72,7 @@ public class SCR_InputAxis_2D
         }
 
         // Check if the axis changed value
-        Vector2 newAxisValue = new Vector2(Input.GetAxis(axisNameX), Input.GetAxis(axisNameY));
+        Vector2 newAxisValue = new Vector2(Input.GetAxisRaw(axisNameX), Input.GetAxisRaw(axisNameY));
         if (newAxisValue != internalAxisValue)
         {
             // Update axis value

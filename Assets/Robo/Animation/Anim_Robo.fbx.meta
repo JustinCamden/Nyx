@@ -1,9 +1,7 @@
 fileFormatVersion: 2
 guid: 0e5f1ac69284044ada4ba3ac832e06aa
-timeCreated: 1485384359
-licenseType: Free
 ModelImporter:
-  serializedVersion: 19
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: //RootNode
     100002: Body_jnt
@@ -119,26 +117,33 @@ ModelImporter:
     7400018: Victory
     7400020: Left Punch
     9500000: //RootNode
+  externalObjects: {}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
+    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
     motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
+    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Walk
@@ -151,7 +156,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -281,7 +286,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 0
+      loopTime: 1
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -423,7 +428,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 1
+        functionName: PunchEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -553,7 +565,14 @@ ModelImporter:
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
-      events: []
+      events:
+      - time: 0.22717148
+        functionName: JumpStart
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask:
       - path: 
         weight: 1
@@ -660,31 +679,708 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Rocket Punch
+      takeName: Rocket Punch
+      firstFrame: 370
+      lastFrame: 460
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 1
+        functionName: RocketPunchEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Origin_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Head_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2/Lt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2/Lt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2/Lt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2/Lt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2/Rt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2/Rt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2/Rt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2/Rt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt/Lt_Foot_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt/Rt_Foot_jnt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hit Reaction
+      takeName: Hit Reaction
+      firstFrame: 740
+      lastFrame: 756
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 1
+        functionName: HitReactEnd
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Origin_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Head_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2/Lt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2/Lt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2/Lt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2/Lt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2/Rt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2/Rt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2/Rt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2/Rt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt/Lt_Foot_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt/Rt_Foot_jnt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Victory
+      takeName: Victory
+      firstFrame: 902
+      lastFrame: 938
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Origin_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Head_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2/Lt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2/Lt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2/Lt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2/Lt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2/Rt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2/Rt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2/Rt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2/Rt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt/Lt_Foot_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt/Rt_Foot_jnt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: 'Deactivate '
+      takeName: 'Deactivate '
+      firstFrame: 855
+      lastFrame: 892
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Origin_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Head_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2/Lt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2/Lt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2/Lt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2/Lt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2/Rt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2/Rt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2/Rt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2/Rt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt/Lt_Foot_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt/Rt_Foot_jnt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Blocking Idle
+      takeName: Blocking Idle
+      firstFrame: 771
+      lastFrame: 783
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Origin_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Head_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Index1/Lt_Index2/Lt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Middle1/Lt_Middle2/Lt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Pinkey1/Lt_Pinkey2/Lt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Arm_jnt/Lt_Elbow_jnt/Lt_Wrist_jnt/Lt_Hand_jnt/Lt_Thumb1/Lt_Thumb2/Lt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Lt_Shoulder_jnt/Lt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Forearm_Attack_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Index1/Rt_Index2/Rt_Index3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Middle1/Rt_Middle2/Rt_Middle3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Pinkey1/Rt_Pinkey2/Rt_Pinkey3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Arm_jnt/Rt_Elbow_jnt/Rt_Wrist_jnt/Rt_Hand_jnt/Rt_Thumb1/Rt_Thumb2/Rt_Thumb3
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Body_jnt/Rt_Shoulder_jnt/Rt_Shoulder_Attach_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Lt_Leg_jnt/Lt_Knee_jnt/Lt_Ankle_jnt/Lt_Foot_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt
+        weight: 1
+      - path: Origin_jnt/Waist_jnt/Rt_Leg_jnt/Rt_Knee_jnt/Rt_Ankle_jnt/Rt_Foot_jnt
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 0
     importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
+    normalCalculationMode: 0
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -696,6 +1392,8 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
     hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   animationType: 2
   humanoidOversampling: 1

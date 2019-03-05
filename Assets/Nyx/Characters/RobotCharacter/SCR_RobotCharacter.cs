@@ -37,11 +37,40 @@ public class SCR_RobotCharacter : MonoBehaviour
     // Movement caches
     private Vector3 moveDirection;
     private Vector3 facingDirection;
-    private float accelerationProgress;
+    private float accelerationProgress = 0.0f;
 
     // Input variables
-    public float moveInput;
-    public bool jumpQueued;
+    public float moveInput = 0.0f;
+    public bool jumpRequested = false;
+    private bool jumpQueued = false;
+    private bool jumpStarting = false;
+
+
+    // Animation variables
+    // Types of actions the robot can perform
+    private enum RobotAction
+    {
+        Idle,
+        Punching,
+        RocketPunching,
+        HitReacting,
+    }
+    // The current action state of the character
+    private RobotAction actionState = RobotAction.Idle;
+    // Types of movement stances the robot can take
+    private enum RobotStance
+    {
+        Idle,
+        Walking,
+        InAir,
+        Blocking
+    }
+    // The current movement stance of the character
+    private RobotStance stanceState;
+    [SerializeField, Tooltip("The animator for the robot character.")]
+    private Animator ownedAnimator;
+    [SerializeField, Tooltip("The animation event holder for the robot character.")]
+    private SCR_RobotAnimEvents ownedAnimEvents;
 
     // Start is called before the first frame update
     void Start()
@@ -59,9 +88,32 @@ public class SCR_RobotCharacter : MonoBehaviour
         {
             ownedHealth = GetComponent<SCR_Health>();
         }
+        if (!ownedAnimator)
+        {
+            ownedAnimator = GetComponentInChildren<Animator>();
+        }
+        if (!ownedAnimEvents)
+        {
+            ownedAnimEvents = GetComponentInChildren<SCR_RobotAnimEvents>();
+            if (ownedAnimEvents && ownedAnimator)
+            {
+                if (!ownedAnimEvents.owningRobot)
+                {
+                    ownedAnimEvents.owningRobot = this;
+                }
+                if (!ownedAnimEvents.robotAnimator)
+                {
+                    ownedAnimEvents.robotAnimator = ownedAnimator;
+                }
+            }
+        }
 
         // Set initial facing direction depending on the current rotation of the robot
         facingDirection.x = Mathf.Sign(Vector3.Dot(transform.forward, Vector3.right));
+
+        // Slightly bias facing direction so that rotation faces towards the camera
+        // and we can see his beautiful face
+        facingDirection.z = -0.01f;
     }
 
     // Update is called once per frame
@@ -69,8 +121,14 @@ public class SCR_RobotCharacter : MonoBehaviour
     {
         // Update the direction of movement
         // If the move input is not zero
-        if (moveInput != 0.0f)
+        if (moveInput != 0.0f && CanMove())
         {
+            // Update movement state
+            if (stanceState != RobotStance.InAir)
+            {
+                SetStanceState(RobotStance.Walking);
+            }
+
             // Accelerate towards max acceleration
             if (accelerationProgress < 1.0f)
             {
@@ -80,10 +138,6 @@ public class SCR_RobotCharacter : MonoBehaviour
 
             // Update facing direction
             facingDirection.x = Mathf.Sign(Vector3.Dot(moveDirection, Vector3.right));
-
-            // Slightly bias facing direction so that rotation faces towards the camera
-            // and we can see his beautiful face
-            facingDirection.z = -0.01f;
         }
 
         // Otherwise decelerate
@@ -91,21 +145,37 @@ public class SCR_RobotCharacter : MonoBehaviour
         {
             accelerationProgress = Mathf.Max(accelerationProgress - (Time.deltaTime * (1.0f / moveDecelerationPeriod)), 0.0f);
             moveDirection.x = moveAccelerationCurve.Evaluate(accelerationProgress) * moveSpeed * moveInput;
+            if (stanceState == RobotStance.Walking)
+            {
+                SetStanceState(RobotStance.Idle);
+            }
         }
 
         // If we are grounded
         if (ownedCharacterController.isGrounded)
         {
             // Begin jump if queued
-            if (jumpQueued)
+            if (jumpRequested && !jumpQueued && CanMove() && CanJump())
             {
-                moveDirection.y = jumpForce;
+                SetStanceState(RobotStance.InAir);
+                jumpQueued = true;
             }
 
             // Otherwise, keep the character on the ground
             else
             {
-                moveDirection.y = -gravity;
+                if (jumpStarting)
+                {
+                    jumpStarting = false;
+                }
+                else
+                {
+                    if (!jumpQueued && stanceState == RobotStance.InAir)
+                    {
+                        SetStanceState(RobotStance.Idle);
+                    }
+                    moveDirection.y = -gravity;
+                }
             }
         }
 
@@ -126,6 +196,176 @@ public class SCR_RobotCharacter : MonoBehaviour
                 transform.rotation,
                 Quaternion.LookRotation(facingDirection),
                 Time.deltaTime * rotationSpeed);
+        }
+    }
+
+    private void SetActionState(RobotAction newAction)
+    {
+        // Reset old state
+        if (newAction != actionState)
+        {
+            switch (actionState)
+            {
+                case RobotAction.HitReacting:
+                    {
+                        ownedAnimator.SetBool("HitReact", false);
+                        break;
+                    }
+                case RobotAction.Punching:
+                    {
+                        ownedAnimator.SetBool("Punching", false);
+                        break;
+                    }
+                case RobotAction.RocketPunching:
+                    {
+                        ownedAnimator.SetBool("RocketPunching", false);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            // Setup new state
+            actionState = newAction;
+            switch(actionState)
+            {
+                case RobotAction.HitReacting:
+                    {
+                        ownedAnimator.SetBool("HitReact", true);
+                        break;
+                    }
+                case RobotAction.Punching:
+                    {
+                        ownedAnimator.SetBool("Punching", true);
+                        break;
+                    }
+                case RobotAction.RocketPunching:
+                    {
+                        ownedAnimator.SetBool("RocketPunching", true);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+        }
+
+        return;
+    }
+
+    private void SetStanceState(RobotStance newStance)
+    {
+        // Reset old state
+        if (newStance != stanceState)
+        {
+            switch (stanceState)
+            {
+                case RobotStance.Blocking:
+                    {
+                        ownedAnimator.SetBool("Blocking", false);
+                        break;
+                    }
+                case RobotStance.InAir:
+                    {
+                        ownedAnimator.SetBool("InAir", false);
+                        break;
+                    }
+                case RobotStance.Walking:
+                    {
+                        ownedAnimator.SetBool("Walking", false);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+
+            // Setup new state
+            stanceState = newStance;
+            switch (stanceState)
+            {
+                case RobotStance.Blocking:
+                    {
+                        ownedAnimator.SetBool("Blocking", true);
+                        break;
+                    }
+                case RobotStance.InAir:
+                    {
+                        ownedAnimator.SetBool("InAir", true);
+                        break;
+                    }
+                case RobotStance.Walking:
+                    {
+                        ownedAnimator.SetBool("Walking", true);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+        }
+
+        return;
+    }
+
+    private bool CanEnterAction()
+    {
+        return (!ownedHealth.IsDead 
+            && (stanceState == RobotStance.Walking || stanceState == RobotStance.Idle)
+             && actionState == RobotAction.Idle);
+    }
+
+    private bool CanMove()
+    {
+        return (!ownedHealth.IsDead
+            && stanceState != RobotStance.Blocking);
+    }
+
+    private bool CanJump()
+    {
+        return actionState == RobotAction.Idle;
+    }
+
+    public void OnPunchEnd()
+    {
+        if (actionState == RobotAction.Punching)
+        {
+            SetActionState(RobotAction.Idle);
+        }
+        return;
+    }
+
+    public void OnRocketPunchEnd()
+    {
+        if (actionState == RobotAction.Punching)
+        {
+            SetActionState(RobotAction.Idle);
+        }
+        return;
+    }
+
+    public void OnHitReactEnd()
+    {
+        if (actionState == RobotAction.HitReacting)
+        {
+            SetActionState(RobotAction.Idle);
+        }
+
+        return;
+    }
+
+    public void OnJumpStart()
+    {
+        if (jumpQueued)
+        {
+            moveDirection.y = jumpForce;
+            jumpQueued = false;
+            jumpStarting = true;
         }
     }
 }

@@ -26,7 +26,7 @@ public class SCR_Health : MonoBehaviour
     {
         get
         {
-            return IsDead;
+            return internalIsDead;
         }
     }
 

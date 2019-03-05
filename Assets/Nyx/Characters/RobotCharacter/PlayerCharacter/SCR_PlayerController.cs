@@ -32,6 +32,6 @@ public class SCR_PlayerController : MonoBehaviour
     {
         // Update input on the robot
         controlledRobot.moveInput = PlayerActions.move.AxisValue;
-        controlledRobot.jumpQueued = PlayerActions.jump.WasPressed;
+        controlledRobot.jumpRequested = PlayerActions.jump.WasPressed;
     }
 }
