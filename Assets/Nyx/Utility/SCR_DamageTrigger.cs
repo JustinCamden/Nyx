@@ -68,15 +68,20 @@ public class SCR_DamageTrigger : MonoBehaviour
 
     public void ActivateDamageTrigger()
     {
-       if (!internalActive)
-       {
+        if (!internalActive)
+        {
             internalActive = true;
             Collider[] overlappingColliders = Physics.OverlapBox(damageCollider.transform.position, damageCollider.size / 2.0f);
             foreach (Collider other in overlappingColliders)
             {
+                if (!internalActive)
+                {
+                    break;
+                }
                 CheckImpactObject(other);
             }
-       }
+        }
+
 
         return;
     }

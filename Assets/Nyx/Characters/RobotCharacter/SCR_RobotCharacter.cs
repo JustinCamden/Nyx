@@ -43,6 +43,10 @@ public class SCR_RobotCharacter : MonoBehaviour
     public float moveInput = 0.0f;
     private bool jumpQueued = false;
     private bool jumpStarting = false;
+    [SerializeField, Tooltip("The limit to how far we can go left and right")]
+    float mapLimits = 10.0f;
+    private bool victory;
+
 
     // Damage triggers
     [SerializeField, Tooltip("The damage trigger for the normal punch.")]
@@ -145,7 +149,15 @@ public class SCR_RobotCharacter : MonoBehaviour
     void UpdateCharacterController()
     {
         // Update the direction of movement
-        // If the move input is not zero
+        if (moveInput != 0.0f)
+        {
+            if ((moveInput < 0.0f && transform.position.x <= -mapLimits)
+                ||(moveInput > 0.0f && transform.position.x >= mapLimits))
+            {
+                moveInput = 0.0f;
+            }
+        }
+
         if (moveInput != 0.0f && CanMove())
         {
             // Update movement state
@@ -189,26 +201,32 @@ public class SCR_RobotCharacter : MonoBehaviour
                 if (!jumpQueued && stanceState == RobotStance.InAir)
                 {
                     SetStanceState(RobotStance.Idle);
-                    jumpDamageTrigger.DeactivateDamageTrigger();
                 }
+                if (moveDirection.y > 0.0f)
+                {
+                    Debug.Log(moveDirection.y);
+                }
+
+                jumpDamageTrigger.DeactivateDamageTrigger();
                 moveDirection.y = -gravity;
             }
         }
-
 
         // Else, gradually apply gravity
         else
         {
             // Multiply gravity by falling for a better feeling arc
             moveDirection.y -= gravity * gravityFallingMultiplier * Time.deltaTime;
-            if (moveDirection.y < 0.0f && !jumpDamageTrigger.Active)
+            if (moveDirection.y < 0.0f)
             {
                 jumpDamageTrigger.ActivateDamageTrigger();
             }
         }
 
         // Apply movement
-        ownedCharacterController.Move(moveDirection * Time.deltaTime);
+        Vector3 moveUpdate = moveDirection * Time.deltaTime;
+        moveUpdate.z = transform.position.z * -1.0f;
+        ownedCharacterController.Move(moveUpdate);
 
         // Rotate towards the last facing direction
         if (transform.forward != facingDirection)
@@ -340,14 +358,16 @@ public class SCR_RobotCharacter : MonoBehaviour
     {
         return (!ownedHealth.IsDead 
             && (stanceState == RobotStance.Walking || stanceState == RobotStance.Idle)
-             && actionState == RobotAction.Idle);
+             && actionState == RobotAction.Idle
+             && !victory);
     }
 
     private bool CanMove()
     {
         return (!ownedHealth.IsDead
             && stanceState != RobotStance.Blocking
-            && actionState != RobotAction.RocketPunching);
+            && actionState != RobotAction.RocketPunching
+            && !victory);
     }
 
     private bool CanJump()
@@ -453,7 +473,6 @@ public class SCR_RobotCharacter : MonoBehaviour
         if (!jumpQueued && CanMove() && CanJump())
         {
             SetStanceState(RobotStance.InAir);
-            jumpDamageTrigger.ActivateDamageTrigger();
             jumpQueued = true;
         }
     }
@@ -480,6 +499,16 @@ public class SCR_RobotCharacter : MonoBehaviour
 
     public void OnVictory()
     {
+        victory = true;
         ownedAnimator.SetBool("Victory", true);
+    }
+
+    // Used because character controller grounded is terrible
+    private bool IsGrounded()
+    {
+        int layerMask = 1 << 9;
+        layerMask = ~layerMask;
+        RaycastHit hit;
+        return Physics.Raycast(transform.position, Vector3.down, out hit, ownedCharacterController.height);
     }
 }

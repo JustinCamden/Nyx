@@ -89,7 +89,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244608161}
   m_LocalRotation: {x: -0.023161188, y: -0.40020174, z: -0.010117728, w: 0.9160785}
-  m_LocalPosition: {x: -1.43, y: -0, z: -1.54}
+  m_LocalPosition: {x: 0.73, y: 0, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1321632962}
@@ -125,7 +125,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -3, y: 0, z: 0}
 --- !u!1 &1321632961
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1321632961}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: -0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1244608162}
@@ -1047,7 +1047,6 @@ GameObject:
   - component: {fileID: 1176960315941695175}
   - component: {fileID: 1176960315941695174}
   - component: {fileID: 1176960315941695173}
-  - component: {fileID: 1176960315941695171}
   m_Layer: 0
   m_Name: PFB_PlayerCharacter
   m_TagString: Untagged
@@ -1103,6 +1102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlledRobot: {fileID: 1176960315941695175}
   PlayerActions: {fileID: 0}
+  healthText: {fileID: 0}
+  controlledHealth: {fileID: 1176960315941695174}
 --- !u!114 &1176960315941695175
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1150,6 +1151,7 @@ MonoBehaviour:
   gravity: 9.8
   gravityFallingMultiplier: 4
   moveInput: 0
+  mapLimits: 15
   punchDamageTrigger: {fileID: 1176960315356765403}
   jumpDamageTrigger: {fileID: 598228426}
   rocketPunchDamageTrigger: {fileID: 1244608164}
@@ -1168,7 +1170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03674626ee615444f986f76986459cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  internalMaxHealth: 100
   internalHealth: 100
   owningTeamAgent: {fileID: 1176960315941695173}
 --- !u!114 &1176960315941695173
@@ -1184,25 +1186,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   internalTeam: 1
---- !u!1818360608 &1176960315941695171
-PositionConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1176960315941695172}
-  m_Enabled: 1
-  m_Weight: 1
-  m_TranslationAtRest: {x: 0, y: 0, z: 0}
-  m_TranslationOffset: {x: 0, y: 0, z: 0}
-  m_AffectTranslationX: 0
-  m_AffectTranslationY: 0
-  m_AffectTranslationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 1176960315941695170}
-    weight: 1
 --- !u!1 &1176960315954429628
 GameObject:
   m_ObjectHideFlags: 0

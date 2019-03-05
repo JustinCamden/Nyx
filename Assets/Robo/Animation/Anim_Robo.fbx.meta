@@ -710,22 +710,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 1
+      - time: 0.44018558
         functionName: RocketPunchEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
-      - time: 0.3357843
+      - time: 0.28314602
         functionName: RocketPunchStart
-        data: 
-        objectReferenceParameter: {instanceID: 0}
-        floatParameter: 0
-        intParameter: 0
-        messageOptions: 0
-      - time: 0.42156854
-        functionName: RocketPunchEnd
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

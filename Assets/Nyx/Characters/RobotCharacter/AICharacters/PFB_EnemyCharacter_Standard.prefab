@@ -173,7 +173,6 @@ GameObject:
   - component: {fileID: 189746064143414880}
   - component: {fileID: 6272897769836274527}
   - component: {fileID: 4699064710537930949}
-  - component: {fileID: 1864802570278920438}
   - component: {fileID: 5405010540407084054}
   m_Layer: 0
   m_Name: PFB_EnemyCharacter_Standard
@@ -231,7 +230,7 @@ MonoBehaviour:
   ownedCharacterController: {fileID: 7629126226546418086}
   ownedTeamAgent: {fileID: 4699064710537930949}
   ownedHealth: {fileID: 6272897769836274527}
-  moveSpeed: 5
+  moveSpeed: 3
   moveAccelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -263,6 +262,7 @@ MonoBehaviour:
   gravity: 9.8
   gravityFallingMultiplier: 4
   moveInput: 0
+  mapLimits: 30
   punchDamageTrigger: {fileID: 8901219544250375058}
   jumpDamageTrigger: {fileID: 3224255117330796628}
   rocketPunchDamageTrigger: {fileID: 3224255116902914874}
@@ -281,8 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03674626ee615444f986f76986459cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  internalHealth: 100
+  internalMaxHealth: 100
+  internalHealth: 35
   owningTeamAgent: {fileID: 4699064710537930949}
 --- !u!114 &4699064710537930949
 MonoBehaviour:
@@ -297,25 +297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   internalTeam: 2
---- !u!1818360608 &1864802570278920438
-PositionConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 727982722449735978}
-  m_Enabled: 1
-  m_Weight: 1
-  m_TranslationAtRest: {x: 0, y: 0, z: 0}
-  m_TranslationOffset: {x: 0, y: 0, z: 0}
-  m_AffectTranslationX: 0
-  m_AffectTranslationY: 0
-  m_AffectTranslationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 5818839466028154496}
-    weight: 1
 --- !u!114 &5405010540407084054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controlledRobot: {fileID: 0}
+  attackRange: 3
 --- !u!1 &842222913906322627
 GameObject:
   m_ObjectHideFlags: 0
@@ -670,7 +652,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3224255116845672799}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 3224255116902914876}
@@ -747,7 +729,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3224255116902914879}
   m_LocalRotation: {x: -0.023161188, y: -0.40020174, z: -0.010117728, w: 0.9160785}
-  m_LocalPosition: {x: -1.43, y: -0, z: -1.54}
+  m_LocalPosition: {x: 0.73, y: 0, z: 0.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3224255116845672796}
@@ -783,7 +765,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 5, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -3, y: 0, z: 0}
 --- !u!1 &3224255117330796633
 GameObject:
   m_ObjectHideFlags: 0

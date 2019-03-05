@@ -5,7 +5,14 @@ using UnityEngine;
 public class SCR_Health : MonoBehaviour
 {
     [SerializeField, Tooltip("The maximum health of this agent.")]
-    private float maxHealth = 100.0f;
+    private float internalMaxHealth = 100.0f;
+    public float MaxHealth
+    {
+        get
+        {
+            return internalMaxHealth;
+        }
+    }
 
     [SerializeField, Tooltip("The current health of this agent.")]
     private float internalHealth = 100.0f;
@@ -29,7 +36,7 @@ public class SCR_Health : MonoBehaviour
         {
             owningTeamAgent = GetComponent<SCR_TeamAgent>();
         }
-        internalHealth = Mathf.Min(maxHealth, internalHealth);
+        internalHealth = Mathf.Min(internalMaxHealth, internalHealth);
     }
 
     public SCR_TeamAgent.Team HealthTeam
@@ -96,7 +103,7 @@ public class SCR_Health : MonoBehaviour
     {
         if (!internalIsDead)
         {
-            internalHealth = Mathf.Min(maxHealth, internalHealth + healAmount);
+            internalHealth = Mathf.Min(internalMaxHealth, internalHealth + healAmount);
         }
         return;
     }
